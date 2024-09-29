@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: 1234
+
+development:
+  <<: *default
+  database: hospital
+
+test:
+  <<: *default
+  database: hospitalt
+
+production:
+  <<: *default
+  database: hospitalp
+  username: postgres
+  password: <%= ENV['HOSPITAL_PORTAL_DATABASE_PASSWORD'] %>
